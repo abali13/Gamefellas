@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene{
         this.load.audio('sfx_select', './assets/assets_blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
+        this.load.audio('music', './assets/backgroundMusic.mp3');
       }
     create(){
         let menuConfig = {
@@ -32,6 +33,12 @@ class Menu extends Phaser.Scene{
         //define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+        //play music
+        //this.scene.start('musicScene');
+        var backgroundMusic = this.sound.add('music');
+        backgroundMusic.loop = true;
+        backgroundMusic.play();
     }
     
     update(){
@@ -42,7 +49,7 @@ class Menu extends Phaser.Scene{
               gameTimer: 60000    
             }
             this.sound.play('sfx_select');
-            this.scene.start('playScene');    
+            this.scene.start('playScen');    
           }
           if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // hard mode
@@ -51,7 +58,7 @@ class Menu extends Phaser.Scene{
               gameTimer: 45000    
             }
             this.sound.play('sfx_select');
-            this.scene.start('playScene');    
+            this.scene.start('playScen');    
           }
     }
 }

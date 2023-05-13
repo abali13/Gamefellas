@@ -14,13 +14,16 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         if(this.x <= 0 - this.width){
             this.reset();
             currScore++;
+            this.y = Phaser.Math.Between(this.height, borderUISize * 11);
             //console.log(currScore);
         }
+       
 
     }
 
     //reset position
     reset(){
         this.x = game.config.width;
+        this.moveSpeed += 0.2;
     }
 }
