@@ -15,7 +15,10 @@ let config = {
     type: Phaser.CANVAS,
     width: 640,
     height: 480,
-    scene: [ Menu, Play ],
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    scene: [ Menu, Play, Music],
     backgroundColor: '#33C027'//'#00FF11'
 }
 let game = new Phaser.Game(config);

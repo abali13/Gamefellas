@@ -8,7 +8,7 @@ class Music extends Phaser.Scene{
 
       }
     create(){
-       backgroundMusic = this.add.audio('music');
+       let backgroundMusic = this.sound.add('music');
        backgroundMusic.loop = true;
        backgroundMusic.play();
 

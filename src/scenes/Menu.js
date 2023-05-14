@@ -38,10 +38,10 @@ class Menu extends Phaser.Scene{
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
         //play music
-        //this.scene.start('musicScene');
-        var backgroundMusic = this.sound.add('music');
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        
+        //var backgroundMusic = this.sound.add('music');
+        //backgroundMusic.loop = true;
+        //backgroundMusic.play();
     }
     
     update(){
@@ -61,7 +61,8 @@ class Menu extends Phaser.Scene{
               gameTimer: 45000    
             }
             this.sound.play('sfx_select');
-            this.scene.start('playScen');    
+            this.scene.start('playScen');
+               
           }
     }
 }
