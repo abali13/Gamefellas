@@ -4,10 +4,6 @@ class Play extends Phaser.Scene{
         this.highScore = 0;
     }
     preload() {
-        // load images/tile sprites
-        //this.load.image('ball', './assets/ball.png');
-        //this.load.image('spacedefender', './assets/spacedefender.png');
-        this.load.image('starfield', './assets/starfield.png');
         this.load.image('field', './assets/field.png');
         this.load.image('ball1', './assets/Ball1_24x24.png');
         this.load.image('defender', './assets/Defender.png');
