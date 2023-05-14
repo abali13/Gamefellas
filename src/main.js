@@ -15,7 +15,8 @@ let config = {
     type: Phaser.CANVAS,
     width: 640,
     height: 480,
-    scene: [ Menu, Play ]
+    scene: [ Menu, Play ],
+    backgroundColor: '#33C027'//'#00FF11'
 }
 let game = new Phaser.Game(config);
 let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN;

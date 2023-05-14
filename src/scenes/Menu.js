@@ -8,6 +8,9 @@ class Menu extends Phaser.Scene{
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
         this.load.audio('music', './assets/backgroundMusic.mp3');
+        this.load.audio('sfx_startWhistle', './assets/startWhistle.mp3');
+        this.load.audio('sfx_finalWhistle', './assets/finalWhistle.mp3');
+
       }
     create(){
         let menuConfig = {
@@ -24,10 +27,10 @@ class Menu extends Phaser.Scene{
         }
 
         //menu text
-        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'USE <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
+        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'Frantic Futball Frenzy', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'USE Up and Down arrows to move', menuConfig).setOrigin(0.5);
+        menuConfig.backgroundColor = '#00F0F0';
+        menuConfig.color = '#013220'; //'#000';
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5);
 
         //define keys
@@ -48,7 +51,7 @@ class Menu extends Phaser.Scene{
               spaceshipSpeed: 3,
               gameTimer: 60000    
             }
-            this.sound.play('sfx_select');
+            this.sound.play('sfx_startWhistle');
             this.scene.start('playScen');    
           }
           if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {

@@ -28,6 +28,7 @@ class Play extends Phaser.Scene{
         this.p1Rocket = new Rocket(this, borderUISize + 12 , game.config.height / 2, 'ball1').setOrigin(0.5, 0);
 
 
+        /*
         this.sprite = me.game.add.sprite(me.game.world.centerX, 300, 'myball');
         this.sprite.animations.add(
             'moving',
@@ -37,6 +38,7 @@ class Play extends Phaser.Scene{
 
         );
         this.sprite.animations.play('moving');
+        */
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*7 , 'spaceship', 0, 20).setOrigin(0,0);
@@ -170,7 +172,7 @@ class Play extends Phaser.Scene{
             this.ship01.moveSpeed += 0.1;               // update spaceships (x3)
             this.ship02.moveSpeed += 0.1;
             this.ship03.moveSpeed += 0.1;
-            console.log("Speed Increased")
+            //console.log("Speed Increased")
             //game.settings.spaceShipSpeed = 10;
         }
         
@@ -212,6 +214,7 @@ class Play extends Phaser.Scene{
             
             this.gameOver = true;
             currScore = 0;
+            //this.sound.play('sfx_finalWhistle');
            
             
             
@@ -220,7 +223,7 @@ class Play extends Phaser.Scene{
             this.p1Rocket.reset();
             this.shipExplode(this.ship02);
             this.gameOver = true;
-          
+           
             //this.clock.delay += 10000;
             
         }
@@ -229,6 +232,7 @@ class Play extends Phaser.Scene{
             this.shipExplode(this.ship01);
             this.gameOver = true;
             currScore = 0;
+            //this.sound.play('sfx_finalWhistle');
             //this.clock.delay += 10000;
             
         }
@@ -250,6 +254,22 @@ class Play extends Phaser.Scene{
             }
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
+
+            let creditsConfig = {
+                fontFamily: 'Courier',
+                fontSize: '10px',
+                backgroundColor: '#F3B141',
+                color: '#843605',
+                align: 'left',
+                padding: {
+                top: 5,
+                bottom: 5,
+                },
+                fixedWidth: 0
+            }
+            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://tunetank.com/track/3107-powerful-workout/ \nWhistle Sfx: https://www.zapsplat.com/?s=referee+whistle+&post_type=music&sound-effect-category-id=\n  ', creditsConfig).setOrigin(0.5);
+
+            
         }
 
 
@@ -289,7 +309,8 @@ class Play extends Phaser.Scene{
         //this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, currScore, scoreConfig);
         
         //this.scoreLeft.setText(currScore);
-        this.sound.play('sfx_explosion');         
+        this.sound.play('sfx_explosion'); 
+        this.sound.play('sfx_finalWhistle');        
       }  
       
 }
