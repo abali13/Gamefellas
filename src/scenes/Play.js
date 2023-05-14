@@ -19,7 +19,8 @@ class Play extends Phaser.Scene{
 
 
         //Tried to make animations with the atlas, but I kept getting an error in phaser.js, which I tried to google
-        //But I could not find a solution for it
+        //But I could not find a solution for it. I tried to pinpoint which part of my code was causing the error but 
+        //since the console only showed an "error in phaser.js" I could not find it.
 
 
         /*
