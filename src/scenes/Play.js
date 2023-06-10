@@ -7,6 +7,8 @@ class Play extends Phaser.Scene{
         this.load.image('field', './assets/field.png');
         this.load.image('ball1', './assets/Ball1_24x24.png');
         this.load.image('defender', './assets/Defender.png');
+        this.load.image('youngHenry', './assets/young_henry.png');
+        this.load.image('reportCard', './assets/report_card.png');
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         this.load.atlas('myball', './assets/spritesheet.png', './assets/sprites.json')
@@ -14,7 +16,7 @@ class Play extends Phaser.Scene{
     create(){
         this.scene.launch('musicScene'); 
         this.field = this.add.tileSprite(0, 0, 640, 480, 'field').setOrigin(0,0);
-        this.ball = new Ball(this, borderUISize , game.config.height / 2, 'ball1').setOrigin(0.5, 0);
+        this.ball = new Ball(this, borderUISize , game.config.height / 2, 'youngHenry').setOrigin(0.5, 0);
 
 
 
@@ -35,9 +37,9 @@ class Play extends Phaser.Scene{
         this.sprite.animations.play('moving');
         */
         
-        this.defender01 = new Defender(this, game.config.width + borderUISize*6, borderUISize*4, 'defender', 0, 30).setOrigin(0, 0);
+        this.defender01 = new Defender(this, game.config.width + borderUISize*6, borderUISize*4, 'report_card', 0, 30).setOrigin(0, 0);
         this.defender02 = new Defender(this, game.config.width + borderUISize*3, borderUISize*7 , 'defender', 0, 20).setOrigin(0,0);
-        this.defender03 = new Defender(this, game.config.width, borderUISize*10 , 'defender', 0, 10).setOrigin(0,0);
+        this.defender03 = new Defender(this, game.config.width, borderUISize*10 , 'report_card', 0, 10).setOrigin(0,0);
         
 
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);

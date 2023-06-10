@@ -38,8 +38,8 @@ class Menu extends Phaser.Scene{
       }
 
         //menu text
-        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'Frantic Futball Frenzy', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'USE UP and DOWN arrows to move and dribble the ball past the defenders!', dirConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'GameFellas, rough demo', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'USE UP and DOWN arrows to move and dribble henry past his current enemies!', dirConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00F0F0';
         menuConfig.color = '#013220'; //'#000';
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5);
