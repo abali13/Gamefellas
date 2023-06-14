@@ -7,16 +7,22 @@ class Play extends Phaser.Scene{
         this.load.image('field', './assets/field.png');
         this.load.image('ball1', './assets/Ball1_24x24.png');
         this.load.image('defender', './assets/Defender.png');
+
         this.load.image('youngHenry', './assets/young_henry.png');
         this.load.image('reportCard', './assets/report_card.png');
+        this.load.image('nycBackground', './assets/nyc_background.png');
+        this.load.image('coke', './assets/coke.png');
+        this.load.image('henry', './assets/Henry.png');
+        this.load.image('gun', "./assets/gun.png");
+
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
         this.load.atlas('myball', './assets/spritesheet.png', './assets/sprites.json')
       }
     create(){
         this.scene.launch('musicScene'); 
-        this.field = this.add.tileSprite(0, 0, 640, 480, 'field').setOrigin(0,0);
-        this.ball = new Ball(this, borderUISize , game.config.height / 2, 'youngHenry').setOrigin(0.5, 0);
+        this.field = this.add.tileSprite(0, 0, 640, 480, 'nycBackground').setOrigin(0,0);
+        this.ball = new Ball(this, borderUISize , game.config.height / 2, 'henry').setOrigin(0.5, 0);
 
 
 
@@ -37,9 +43,9 @@ class Play extends Phaser.Scene{
         this.sprite.animations.play('moving');
         */
         
-        this.defender01 = new Defender(this, game.config.width + borderUISize*6, borderUISize*4, 'report_card', 0, 30).setOrigin(0, 0);
-        this.defender02 = new Defender(this, game.config.width + borderUISize*3, borderUISize*7 , 'defender', 0, 20).setOrigin(0,0);
-        this.defender03 = new Defender(this, game.config.width, borderUISize*10 , 'report_card', 0, 10).setOrigin(0,0);
+        this.defender01 = new Defender(this, game.config.width + borderUISize*6, borderUISize*4, 'reportCard', 0, 30).setOrigin(0, 0);
+        this.defender02 = new Defender(this, game.config.width + borderUISize*3, borderUISize*7 , 'gun', 0, 20).setOrigin(0,0);
+        this.defender03 = new Defender(this, game.config.width, borderUISize*10 , 'coke', 0, 10).setOrigin(0,0);
         
 
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -70,20 +76,45 @@ class Play extends Phaser.Scene{
             },
             fixedWidth: 100
         }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, game.config.height - (borderUISize + borderPadding*4), currScore, scoreConfig);
+        //this.scoreLeft = this.add.text(borderUISize + borderPadding, game.config.height - (borderUISize + borderPadding*4), currScore, scoreConfig);
 
-        this.scoreRight = this.add.text(game.config.height, game.config.height - (borderUISize + borderPadding*4), this.highScore, scoreConfig);    
+        //this.scoreRight = this.add.text(game.config.height, game.config.height - (borderUISize + borderPadding*4), this.highScore, scoreConfig);    
         
         
         //Game over flag
         this.gameOver = false;
 
+        scoreConfig.fontSize = '14px';
+        scoreConfig.fixedWidth = 0;
+
+        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+            this.add.text(game.config.width/2, game.config.height/2, 'GAME WON, Henry escaped all of his demons!', scoreConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
+            this.gameOver = true;
+        }, null, this);
        
+
+        this.timeInSec = (game.settings.gameTimer) / 1000;
+        let timerConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'center',
+            padding: {
+            top: 5,
+            bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.timerText = this.add.text((game.config.height / 2) + borderPadding, game.config.height - (borderUISize + borderPadding*4)/*borderUISize + borderPadding*/, this.timeInSec, timerConfig);
     }
 
 
     update(){
 
+         //Updating timer 
+         this.timerText.text = this.clock.getRemainingSeconds();
 
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
@@ -108,11 +139,13 @@ class Play extends Phaser.Scene{
             this.defender01.update();              
             this.defender02.update();
             this.defender03.update();
+            /*
             this.scoreLeft.text = currScore;
             if(currScore > this.highScore){
                 this.highScore = currScore;
                 this.scoreRight.text = this.highScore;
             }
+            */
         }
         
 
@@ -146,7 +179,7 @@ class Play extends Phaser.Scene{
 
 
         //Adding text for gameover
-        if(this.gameOver){
+        if(this.gameOver && this.clock.getRemainingSeconds() > 0){
             let scoreConfig = {
                 fontFamily: 'Courier',
                 fontSize: '28px',
@@ -159,7 +192,7 @@ class Play extends Phaser.Scene{
                 },
                 fixedWidth: 0
             }
-            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER, YOU LOSE', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
 
             let creditsConfig = {
@@ -174,7 +207,8 @@ class Play extends Phaser.Scene{
                 },
                 fixedWidth: 0
             }
-            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://tunetank.com/track/3107-powerful-workout/ \nWhistle Sfx: https://www.zapsplat.com/?s=referee+whistle+&post_type=music&sound-effect-category-id=\nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets\n ', creditsConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://www.youtube.com/watch?v=sfx7Q9XR4eU/ \nWhistle Sfx: https://www.zapsplat.com/?s=referee+whistle+&post_type=music&sound-effect-category-id=\nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets\n ', creditsConfig).setOrigin(0.5);
+            this.clock.remove();
 
             
         }

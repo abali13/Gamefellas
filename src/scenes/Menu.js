@@ -5,7 +5,7 @@ class Menu extends Phaser.Scene{
     preload() {
         // load audio
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
-        this.load.audio('music', './assets/backgroundMusic.mp3');
+        this.load.audio('music', './assets/mafia.mp3');
         this.load.audio('sfx_startWhistle', './assets/startWhistle.mp3');
         this.load.audio('sfx_finalWhistle', './assets/finalWhistle.mp3');
 
@@ -54,17 +54,17 @@ class Menu extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             // easy mode
             game.settings = {
-              speed: 4,    
+              speed: 4, gameTimer: 60000    
             }
-            this.sound.play('sfx_startWhistle');
+            //this.sound.play('sfx_startWhistle');
             this.scene.start('playScen');    
           }
           if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // hard mode
             game.settings = {
-              speed: 6,   
+              speed: 6, gameTimer: 4500 
             }
-            this.sound.play('sfx_startWhistle');
+            //this.sound.play('sfx_startWhistle');
             this.scene.start('playScen');
                
           }

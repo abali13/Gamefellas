@@ -7,7 +7,7 @@ class Ball extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        if(keyUP.isDown && this.y >= borderPadding + 8){
+        if(keyUP.isDown && this.y >= borderPadding){
             this.y -= this.moveSpeed;
         }else if(keyDOWN.isDown && this.y <=  game.config.height - (borderUISize * 3 + this.height - 7) /*game.config.height - borderPadding *2*/){
             this.y += this.moveSpeed;

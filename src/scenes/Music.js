@@ -4,7 +4,7 @@ class Music extends Phaser.Scene{
     }
     preload() {
         // load audio
-        this.load.audio('music', './assets/backgroudMusic.mp3');
+        this.load.audio('music', './assets/mafia.mp3');
 
       }
     create(){
