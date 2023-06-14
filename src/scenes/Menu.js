@@ -54,7 +54,7 @@ class Menu extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             // easy mode
             game.settings = {
-              speed: 4, gameTimer: 60000    
+              speed: 4, gameTimer: 45000    
             }
             //this.sound.play('sfx_startWhistle');
             this.scene.start('playScen');    
@@ -62,7 +62,7 @@ class Menu extends Phaser.Scene{
           if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // hard mode
             game.settings = {
-              speed: 6, gameTimer: 4500 
+              speed: 6, gameTimer: 60000 
             }
             //this.sound.play('sfx_startWhistle');
             this.scene.start('playScen');
