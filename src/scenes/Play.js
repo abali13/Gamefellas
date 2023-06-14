@@ -119,7 +119,7 @@ class Play extends Phaser.Scene{
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.remove('musicScene')
-            this.sound.play('sfx_startWhistle');
+            //this.sound.play('sfx_startWhistle');
             this.scene.restart();
         }
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
@@ -207,7 +207,7 @@ class Play extends Phaser.Scene{
                 },
                 fixedWidth: 0
             }
-            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://www.youtube.com/watch?v=sfx7Q9XR4eU/ \nWhistle Sfx: https://www.zapsplat.com/?s=referee+whistle+&post_type=music&sound-effect-category-id=\nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets\n ', creditsConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://www.youtube.com/watch?v=sfx7Q9XR4eU/ \nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets \nBackground: \nEnemy assets: https://pngtree.com/so/ ', creditsConfig).setOrigin(0.5);
             this.clock.remove();
 
             
