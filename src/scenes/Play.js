@@ -240,7 +240,7 @@ class Play extends Phaser.Scene{
 
         this.scene.remove('musicScene')
         this.sound.play('sfx_explosion'); 
-        this.sound.play('sfx_finalWhistle');        
+       //this.sound.play('sfx_finalWhistle');        
       }  
       
 }
