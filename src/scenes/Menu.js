@@ -26,7 +26,7 @@ class Menu extends Phaser.Scene{
 
         let dirConfig = {
           fontFamily: 'Courier',
-          fontSize: '14px',
+          fontSize: '11px',
           backgroundColor: '#F3B141',
           color: '#843605',
           align: 'right',
