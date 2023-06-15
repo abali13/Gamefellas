@@ -207,7 +207,7 @@ class Play extends Phaser.Scene{
                 },
                 fixedWidth: 0
             }
-            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://www.youtube.com/watch?v=sfx7Q9XR4eU/ \nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets \nBackground: \nEnemy assets: https://pngtree.com/so/ ', creditsConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 128, 'Credits:\nBackground Music: https://www.youtube.com/watch?v=sfx7Q9XR4eU/ \nExplosion sfx: https://github.com/nathanaltice/ballPatrol/tree/master/assets \nBackground:https://www.pinterest.com/?show_error=true \nEnemy assets: https://pngtree.com/so/ \nHenry Picture:https://hero.fandom.com/wiki/Henry_Hill_(Goodfellas)?file=RayLiottaHenryHill.jpeg\n', creditsConfig).setOrigin(0.5);
             this.clock.remove();
 
             
